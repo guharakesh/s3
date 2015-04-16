@@ -89,4 +89,11 @@ function highlightArticles(input) {
 	}).join(' ');
 }
 
-
+function salesman() {
+	function permutation(array) {
+		var results = [];
+		if (array.length === 1) {
+			results.push(array);
+		}
+	}
+}

@@ -94,6 +94,12 @@ function salesman() {
 		var results = [];
 		if (array.length === 1) {
 			results.push(array);
+		} else {
+			results.push(array);
+			var rest = permutation(array.slice(1));
+			rest.forEach(function(current){
+				results.push(array.slice(0,1).concat(current));
+			});
 		}
 	}
 }

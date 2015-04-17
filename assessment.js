@@ -111,17 +111,58 @@ function salesman(points) {
 		return Math.sqrt(Math.pow((end[1]-start[1]),2) + Math.pow((end[0]-start[0]),2));
 	}
 
+	if (points.length === 2) {
+		return points;
+	}
+
 	var middle = permutation(points.slice(1,-1));
-	var shortest;
+	var shortest = -1;
+	var shortestPath = [];
+	var temp;
 	var path;
 
 	for (var i=0;i<middle.length;i++) {
-		path = points[0]
-	}
+		path = [];
+		temp = 0;
+		path.push(points[0]);
 
-	var final = permutation();
-	debugger;
-	console.log(final);
+		for (var j=0;j<middle[i].length;j++) {
+			path.push(middle[i][j]);
+		}
+		
+		path.push(points[points.length-1]);
+
+		for (var n=1;n<path.length;n++) {
+			debugger;
+			temp = temp + distance(path[n-1],path[n]);
+		}
+
+		if ((temp < shortest) || (shortest < 0)) {
+			shortest = temp;
+			shortestPath = path;
+		}
+	}
+	return shortestPath;
 }
 
-salesman([[1,2],[3,4],[5,6]]);
+function randNum(min,max) {
+	return Math.random() * (max - min) + min;
+}
+
+function randInt(min,max) {
+	return Math.floor(Math.random() * (max - min)) + min;
+}
+
+var randLength = randInt(1,21);
+var points = [];
+var point;
+
+for (var i=0;i<randLength;i++) {
+	point = [];
+	point.push(randNum(0,100));
+	point.push(randNum(0,100));
+	points.push(point);
+}
+
+console.log(points);
+console.log(salesman(points));

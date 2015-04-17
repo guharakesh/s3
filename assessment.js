@@ -145,6 +145,7 @@ function salesman(points) {
 	return shortestPath;
 }
 
+/*
 function randNum(min,max) {
 	return Math.random() * (max - min) + min;
 }
@@ -166,3 +167,4 @@ for (var i=0;i<randLength;i++) {
 
 console.log(points);
 console.log(salesman(points));
+*/

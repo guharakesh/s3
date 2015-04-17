@@ -95,11 +95,15 @@ function salesman() {
 		if (array.length === 1) {
 			results.push(array);
 		} else {
-			results.push(array);
-			var rest = permutation(array.slice(1));
-			rest.forEach(function(current){
-				results.push(array.slice(0,1).concat(current));
+			array.forEach(function(current,index,arr){
+				permutation(arr.filter(function(curr,ind){index !== ind}))
+				results.push(current.concat(array.slice(0,1)));
+				debugger;
 			});
 		}
+		return results;
 	}
+	console.log(permutation([1,2,3,4]));
 }
+
+salesman();

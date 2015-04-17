@@ -89,25 +89,39 @@ function highlightArticles(input) {
 	}).join(' ');
 }
 
-function salesman() {
-	function permutation(array) {
-		var results = [];
-		if (array.length === 1) {
-			results.push(array);
-		} else {
-			array.forEach(function(current,index,arr){
-				results
-				.push(array.slice(index,index+1)
-				.concat(permutation(arr.filter(function(curr,ind){
-					return (index !== ind);
-				}))));
-			});
+function salesman(points) {
+	var result = [];
+	var used = [];
+	function permutation(input) {
+		var temp;
+		for (var i=0;i<input.length;i++) {
+			temp = input.splice(i,1)[0];
+			used.push(temp);
+			if (input.length === 0) {
+				result.push(used.slice());
+			}
+			permutation(input);
+			input.splice(i,0,temp);
+			used.pop();
 		}
-		return results;
+		return result;
 	}
-	var answer = permutation([[3,4],[1,2]]);
+	
+	function distance(start,end) {
+		return Math.sqrt(Math.pow((end[1]-start[1]),2) + Math.pow((end[0]-start[0]),2));
+	}
+
+	var middle = permutation(points.slice(1,-1));
+	var shortest;
+	var path;
+
+	for (var i=0;i<middle.length;i++) {
+		path = points[0]
+	}
+
+	var final = permutation();
 	debugger;
-	console.log(answer);
+	console.log(final);
 }
 
-salesman();
+salesman([[1,2],[3,4],[5,6]]);

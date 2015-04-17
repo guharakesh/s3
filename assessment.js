@@ -154,7 +154,7 @@ function randInt(min,max) {
 	return Math.floor(Math.random() * (max - min)) + min;
 }
 
-var randLength = randInt(1,21);
+var randLength = randInt(1,11);
 var points = [];
 var point;
 

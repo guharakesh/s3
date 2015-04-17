@@ -96,14 +96,18 @@ function salesman() {
 			results.push(array);
 		} else {
 			array.forEach(function(current,index,arr){
-				permutation(arr.filter(function(curr,ind){index !== ind}))
-				results.push(current.concat(array.slice(0,1)));
-				debugger;
+				results
+				.push(array.slice(index,index+1)
+				.concat(permutation(arr.filter(function(curr,ind){
+					return (index !== ind);
+				}))));
 			});
 		}
 		return results;
 	}
-	console.log(permutation([1,2,3,4]));
+	var answer = permutation([[3,4],[1,2]]);
+	debugger;
+	console.log(answer);
 }
 
 salesman();
